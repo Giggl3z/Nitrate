@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 let prefix = ".";
-let token = "NjQwMzUzMzkxMDgzNjUxMDcz.XcWsUQ.zPLTPXPJh-6nKVvT5pgKlAX11Es";
+let token = "YOUR TOKEN";
 //Bot owner ID
 let god = 640353391083651073;
 
