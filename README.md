@@ -7,6 +7,8 @@
 - Leave/Join detection
 - DMs message deletion logging
 
+![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
+
 ## Installation
 
 > Note: By using this script you are breaking Discord's Terms of Service. **Use at your own risk.**
