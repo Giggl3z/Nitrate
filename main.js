@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 
 let prefix = ".";
-let token = "YOUR TOKEN";
+let token = "NjQwMzUzMzkxMDgzNjUxMDcz.XcWsUQ.zPLTPXPJh-6nKVvT5pgKlAX11Es";
 //Bot owner ID
 let god = 640353391083651073;
 
@@ -25,11 +25,11 @@ bot.on('guildMemberRemove', member => {
 );
 
 bot.on("messageDelete", (message) => {
-    try
+    if (message.channel.type != 'dm')
     {
         console.log(`[${chalk.red("DELETE")}] - [${chalk.cyan(message.guild.name)}] [${chalk.yellow("#" + message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${message.content}`);
     }
-    catch
+    else
     {
         console.log(`[${chalk.red("DELETE")}] - ${chalk.magenta(message.author.username)}: ${message.content}`);
     }
@@ -37,7 +37,7 @@ bot.on("messageDelete", (message) => {
 
 bot.on("message", message => {
     let code;
-    try
+    if (message.channel.type != 'dm')
     {
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/"))
         {
@@ -88,10 +88,9 @@ bot.on("message", message => {
             console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
         }
     }
-    catch(err)
+    else if (message.channel.type == 'dm')
     { 
         console.log(`[${chalk.inverse("DM")}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
-        console.log(err.message);
     }
 
 });
