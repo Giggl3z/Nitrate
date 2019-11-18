@@ -1,5 +1,12 @@
 # Nitro Auto Redeemer
 
+## Features
+- Automatically redeem nitro gifts sent across all of your servers.
+- Message logging
+- Deleted Messages Logging
+- Leave/Join detection
+- DMs message deletion logging
+
 ## Installation
 
 > Note: By using this script you are breaking Discord's Terms of Service. **Use at your own risk.**
