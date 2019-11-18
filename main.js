@@ -3,10 +3,7 @@ const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-let prefix = ".";
 let token = "YOUR TOKEN";
-//Bot owner ID
-let god = 640353391083651073;
 
 bot.on("ready", () => {
     console.log("Ready");
