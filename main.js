@@ -4,7 +4,6 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
 
-
 // Edit the token with yours (REQUIRED)
 let token = "YOUR TOKEN";
 
