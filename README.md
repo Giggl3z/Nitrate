@@ -28,8 +28,8 @@ https://www.npmjs.com/get-npm
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Discord-Nitro-Redeemer
-$ npm install discord.js chalk request console-title
+$ npm install discord.js chalk request
 $ node main.js
 ```
 
-Feel free to contact me on telegram: @haxed
+If you wish to contact me, join our telegram group:  http://t.me/nitroclaimer
