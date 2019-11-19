@@ -2,10 +2,12 @@ const request = require('request');
 const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const title = require('console-title');
 
 let token = "YOUR TOKEN";
 bot.on("ready", () => {
     console.log("Ready");
+    title(`${bot.user.username} | ${bot.user.email}`);
 });
 bot.on('guildMemberAdd', member => {
     console.log(`[${chalk.yellow("INFO")}] - [${chalk.cyan( member.guild.name)}] ${chalk.magenta(member.user.tag)}: joined.`);
