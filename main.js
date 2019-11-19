@@ -1,4 +1,3 @@
-const link = require('terminal-link');
 const request = require('request');
 const chalk = require('chalk');
 const Discord = require('discord.js');
@@ -64,7 +63,7 @@ bot.on("message", message => {
             console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.black.bgYellow(message.content)}`);
         }
         else {
-            console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${link(chalk.underline(message.content), `https://discordapp.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)}`);
+            console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
         }
     }
     else if (message.channel.type == 'dm') {
