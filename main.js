@@ -4,6 +4,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
 
+
 // Edit the token with yours (REQUIRED)
 let token = "YOUR TOKEN";
 
@@ -72,9 +73,4 @@ bot.on("message", message => {
         console.log(`[${chalk.inverse("DM")}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
     }
 });
-try {
-    bot.login(token);
-}
-catch(err) {
-    console.log(err.message);
-}
+bot.login(token);
