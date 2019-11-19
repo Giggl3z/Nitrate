@@ -3,7 +3,7 @@ const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-let token = "NjQwMzUzMzkxMDgzNjUxMDcz.XcWsUQ.zPLTPXPJh-6nKVvT5pgKlAX11Es";
+let token = "YOUR TOKEN";
 bot.on("ready", () => {
     console.log("Ready");
 });
