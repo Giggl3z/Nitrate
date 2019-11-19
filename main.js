@@ -72,5 +72,9 @@ bot.on("message", message => {
         console.log(`[${chalk.inverse("DM")}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
     }
 });
-
-bot.login(token);
+try {
+    bot.login(token);
+}
+catch(err) {
+    console.log(err.message);
+}
