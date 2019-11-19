@@ -1,13 +1,14 @@
+const link = require('terminal-link');
 const request = require('request');
 const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
 
-let token = "YOUR TOKEN";
+let token = "NjQ2MTU3OTcwNjM1MzU4MjA4.XdNDkQ.drqsY_Jd1WOd3ef512yHzzfLCZE";
 bot.on("ready", () => {
     console.log("Ready");
-    title(`${bot.user.username} | ${bot.user.email}`);
+    title(`${bot.user.tag} | ${bot.guilds.size} guilds`);
 });
 bot.on('guildMemberAdd', member => {
     console.log(`[${chalk.yellow("INFO")}] - [${chalk.cyan( member.guild.name)}] ${chalk.magenta(member.user.tag)}: joined.`);
@@ -63,7 +64,7 @@ bot.on("message", message => {
             console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.black.bgYellow(message.content)}`);
         }
         else {
-            console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
+            console.log(`[${chalk.green("SEND")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${link(chalk.underline(message.content), `https://discordapp.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)}`);
         }
     }
     else if (message.channel.type == 'dm') {
