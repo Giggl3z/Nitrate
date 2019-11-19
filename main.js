@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
 
-let token = "NjQ2MTU3OTcwNjM1MzU4MjA4.XdNDkQ.drqsY_Jd1WOd3ef512yHzzfLCZE";
+let token = "YOUR TOKEN";
 bot.on("ready", () => {
     console.log("Ready");
     title(`${bot.user.tag} | ${bot.guilds.size} guilds`);
