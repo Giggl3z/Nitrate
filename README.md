@@ -9,6 +9,9 @@
 
 ![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
 
+#### Notifications (New)
+![Notification](https://cdn.discordapp.com/attachments/640700265367994388/649072568409653258/unknown.png)
+
 ## Required
 
 > Note: By using this script you are breaking Discord's Terms of Service. **Use at your own risk.**
@@ -28,7 +31,7 @@ https://www.npmjs.com/get-npm
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Discord-Nitro-Redeemer
-$ npm install discord.js chalk request console-title
+$ npm install discord.js chalk request console-title node-notifier
 $ node main.js
 ```
 
