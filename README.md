@@ -27,6 +27,9 @@ You probably will need npm.
 ### npm
 https://www.npmjs.com/get-npm
 
+### git
+https://git-scm.com/downloads
+
 ## Installation
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
