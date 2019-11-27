@@ -7,7 +7,7 @@ const notifier = require('node-notifier');
 
 // Edit the token with yours (REQUIRED)
 let token = "YOUR TOKEN";
-
+  
 bot.on("ready", () => {
     console.log("Ready");
     title(`${bot.user.tag} | ${bot.guilds.size} guilds`);
@@ -50,7 +50,8 @@ bot.on("message", message => {
                     notifier.notify({
                         title: 'Nitro Redeemer',
                         icon: 'nitro-png-2.png',
-                        message: `Channel: #${message.channel.name}\nAuthor: ${message.author.tag}\nInfo: ${result.message}`,
+                        appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
+                        message: result.message,
                         timeout: 0.1
                       });
                 }
@@ -70,7 +71,8 @@ bot.on("message", message => {
                     notifier.notify({
                         title: 'Nitro Redeemer',
                         icon: 'nitro-png-2.png',
-                        message: `Channel: #${message.channel.name}\nAuthor: ${message.author.tag}\nInfo: ${result.message}`,
+                        appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
+                        message: result.message,
                         timeout: 0.1
                       });
                 }
