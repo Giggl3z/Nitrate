@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
+const notifier = require('node-notifier');
 
 // Edit the token with yours (REQUIRED)
 let token = "YOUR TOKEN";
@@ -20,8 +21,11 @@ bot.on('guildMemberRemove', member => {
     }
 );
 bot.on("messageDelete", (message) => {
-    if (message.channel.type != 'dm') {
+    if (message.channel.type != 'dm' && message.channel.type != 'group') {
         console.log(`[${chalk.red("DELETE")}] - [${chalk.cyan(message.guild.name)}] [${chalk.yellow("#" + message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${message.content}`);
+    }
+    else if (message.channel.type == 'dm'){
+        console.log(`[${chalk.red("DELETE")}] - ${chalk.magenta(message.author.username)}: ${message.content}`);
     }
     else {
         console.log(`[${chalk.red("DELETE")}] - ${chalk.magenta(message.author.username)}: ${message.content}`);
@@ -29,7 +33,7 @@ bot.on("messageDelete", (message) => {
     });
 bot.on("message", message => {
     let code;
-    if (message.channel.type != 'dm') {
+    if (message.channel.type != 'dm' && message.channel.type != 'group') {
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
             if (message.content.includes("discord.gift")) {
@@ -43,6 +47,12 @@ bot.on("message", message => {
                 function callback(error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
+                    notifier.notify({
+                        title: 'Nitro Redeemer',
+                        icon: 'nitro-png-2.png',
+                        message: `Channel: #${message.channel.name}\nAuthor: ${message.author.tag}\nInfo: ${result.message}`,
+                        timeout: 0.1
+                      });
                 }
                 request.post(options, callback);
             }
@@ -57,6 +67,12 @@ bot.on("message", message => {
                 function callback(error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
+                    notifier.notify({
+                        title: 'Nitro Redeemer',
+                        icon: 'nitro-png-2.png',
+                        message: `Channel: #${message.channel.name}\nAuthor: ${message.author.tag}\nInfo: ${result.message}`,
+                        timeout: 0.1
+                      });
                 }
                 request.post(options, callback);
             }
@@ -70,6 +86,9 @@ bot.on("message", message => {
     }
     else if (message.channel.type == 'dm') {
         console.log(`[${chalk.inverse("DM")}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
+    }
+    else {
+        console.log(`[${chalk.inverse("GROUP")}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
     }
 });
 bot.login(token);
