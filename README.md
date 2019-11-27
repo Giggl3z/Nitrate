@@ -10,7 +10,7 @@
 ![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
 
 #### Notifications (New)
-![Notification](https://cdn.discordapp.com/attachments/640700265367994388/649072568409653258/unknown.png)
+![Notification](https://cdn.discordapp.com/attachments/640700265367994388/649105849708576778/unknown.png)
 
 ## Required
 
