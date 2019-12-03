@@ -34,7 +34,7 @@ https://git-scm.com/downloads
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Discord-Nitro-Redeemer
-$ npm install discord.js chalk request console-title node-notifier
+$ npm install discord.js chalk request console-title node-notifier open
 $ node main.js
 ```
 
