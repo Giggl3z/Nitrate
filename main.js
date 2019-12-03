@@ -38,6 +38,7 @@ bot.on("message", message => {
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
             if (message.content.includes("discord.gift")) {
                 code = message.content.split("discord.gift/").pop();
+                code = code.split(' ')[0];
                 var options = {
                     url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                     headers: {
@@ -59,6 +60,7 @@ bot.on("message", message => {
             }
             else if (message.content.includes("discordapp.com/gifts")){
                 code = message.content.split("discordapp.com/gifts/").pop();
+                code = code.split(' ')[0];
                 var options = {
                     url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                     headers: {
