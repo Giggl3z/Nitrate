@@ -1,4 +1,4 @@
-dd
+console.log("test");
 const request = require('request');
 const chalk = require('chalk');
 const Discord = require('discord.js');
