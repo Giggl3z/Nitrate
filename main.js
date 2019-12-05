@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require('request');L
 const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
