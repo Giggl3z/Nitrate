@@ -1,6 +1,6 @@
 # Nitro Auto Redeemer
 
-###Automatically redeem nitro gifts sent across all of your servers.
+### Automatically redeem nitro gifts sent across all of your servers.
 
 ![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
 
