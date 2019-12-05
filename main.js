@@ -6,7 +6,7 @@ const title = require('console-title');
 const notifier = require('node-notifier');
 const open = require('open');
 
-// Edit the token with yours (REQUIRED)
+// Edit the token with yours (REQAUIRED)
 let token = "YOUR TOKEN";
 
 let count = 0;
