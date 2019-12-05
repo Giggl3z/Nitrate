@@ -26,6 +26,7 @@ https://www.npmjs.com/get-npm
 https://git-scm.com/downloads
 
 ## Installation
+You must put your token in `config.json`
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Discord-Nitro-Redeemer
