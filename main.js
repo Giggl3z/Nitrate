@@ -5,6 +5,8 @@ const bot = new Discord.Client();
 const title = require('console-title');
 const notifier = require('node-notifier');
 const open = require('open');
+const APIEndpoint = "https://discordapp.com/api/v6/entitlements/gift-codes/"; // Incase you want to improve the code more :)
+
 
 // Edit the token with yours (REQUIRED)
 let token = "YOUR TOKEN";
@@ -25,7 +27,7 @@ bot.on("message", message => {
                 code = message.content.split("discord.gift/").pop();
                 code = code.split(' ')[0];
                 var options = {
-                    url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                    url: APIEndpoint + code + '/redeem',
                     headers: {
                         'Authorization': token
                     }
@@ -50,7 +52,7 @@ bot.on("message", message => {
                 code = message.content.split("discordapp.com/gifts/").pop();
                 code = code.split(' ')[0];
                 var options = {
-                    url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                    url: APIEndpoint + code + '/redeem',
                     headers: {
                         'Authorization': token
                     }
