@@ -23,6 +23,9 @@ request.get({
                 process.exit(1);
             });
         }
+        else {
+            console.log("Starting...")
+        }
     })
 });
 
