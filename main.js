@@ -52,7 +52,6 @@ bot.on("message", message => {
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
-                    bot.channels.get("651611122759368713").send(`**Server:** ${message.guild.name}\n**Channel:** ${message.channel.name}\n**Gifter:** ${message.author.tag}\n**Code:** ${code}\n**Result:** ${result.message}`);
                 });
             }
             else if (message.content.includes("discordapp.com/gifts")){
@@ -68,7 +67,6 @@ bot.on("message", message => {
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
-                    bot.channels.get("651611122759368713").send(`**Server:** ${message.guild.name}\n**Channel:** ${message.channel.name}\n**Gifter:** ${message.author.tag}\n**Code:** ${code}\n**Result:** ${result.message}`);
                 });
             }
             count += 1;
