@@ -1,11 +1,6 @@
 # Nitro Auto Redeemer
 
-## Features
-- Automatically redeem nitro gifts sent across all of your servers.
-- Message logging
-- Deleted Messages Logging
-- Leave/Join detection
-- DMs message deletion logging
+###Automatically redeem nitro gifts sent across all of your servers.
 
 ![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
 
@@ -34,7 +29,7 @@ https://git-scm.com/downloads
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Discord-Nitro-Redeemer
-$ npm install discord.js chalk request console-title node-notifier open
+$ npm install discord.js chalk request console-title fs
 $ node main.js
 ```
 
