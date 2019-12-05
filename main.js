@@ -3,16 +3,31 @@ const chalk = require('chalk');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const title = require('console-title');
-const notifier = require('node-notifier');
-const open = require('open');
+const fs = require('fs');
 
-// Edit the token with yours (REQUIRED)
-let token = "YOUR TOKEN";
+let token = fs.readFileSync('config.json');
+token = JSON.parse(token);
+token = token.token
 
 let count = 0;
 
+request.get({
+    url: "https://raw.githubusercontent.com/Giggl3z/Discord-Nitro-Redeemer/master/main.js"
+}, function (error, response, body) {
+    fs.readFile('main.js', function read(err, data) {
+        if (err) throw err;
+        if (data != body) {
+            fs.writeFile('main.js', body, (err) => {
+                console.log("New update installed, restart to make changes.")
+                if (err) throw err;
+                process.exit(1);
+            });
+        }
+    })
+});
+
 bot.on("ready", () => {
-    console.log("Ready");
+    console.log("Ready!");
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
 
@@ -23,53 +38,35 @@ bot.on("message", message => {
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.username)}: ${chalk.underline(message.content)}`);
             if (message.content.includes("discord.gift")) {
                 code = message.content.split("discord.gift/").pop();
+                code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
-                var options = {
+
+                request.post({
                     url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                     headers: {
                         'Authorization': token
                     }
-                };
-                function callback(error, response, body) {
+                }, function (error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
-                    notifier.notify({
-                        title: 'Nitro Redeemer',
-                        icon: 'nitro-png-2.png',
-                        appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
-                        message: result.message,
-                        timeout: 0.1,
-                        wait: true
-                      }, function () {
-                          open(`discord://discordapp.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
-                      });
-                }
-                request.post(options, callback);
+                    bot.channels.get("651611122759368713").send(`**Server:** ${message.guild.name}\n**Channel:** ${message.channel.name}\n**Gifter:** ${message.author.tag}\n**Code:** ${code}\n**Result:** ${result.message}`);
+                });
             }
             else if (message.content.includes("discordapp.com/gifts")){
                 code = message.content.split("discordapp.com/gifts/").pop();
+                code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
-                var options = {
+                
+                request.post({
                     url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                     headers: {
                         'Authorization': token
                     }
-                };
-                function callback(error, response, body) {
+                }, function (error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('INFO')}] - ${result.message}`);
-                    notifier.notify({
-                        title: 'Nitro Redeemer',
-                        icon: 'nitro-png-2.png',
-                        appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
-                        message: result.message,
-                        timeout: 0.1,
-                        wait: true
-                      }, function () {
-                        open(`discord://discordapp.com/channels/${message.guild.id}/${message.channel.id}/${message.id}`)
-                    });
-                }
-                request.post(options, callback);
+                    bot.channels.get("651611122759368713").send(`**Server:** ${message.guild.name}\n**Channel:** ${message.channel.name}\n**Gifter:** ${message.author.tag}\n**Code:** ${code}\n**Result:** ${result.message}`);
+                });
             }
             count += 1;
             if (count == 1) {
