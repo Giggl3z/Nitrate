@@ -12,7 +12,7 @@ token = token.token
 let count = 0;
 
 request.get({
-    url: "https://raw.githubusercontent.com/Giggl3z/Discord-Nitro-Redeemer/master/main.js"
+    url: "https://raw.githubusercontent.com/Giggl3z/Nitrate/master/main.js"
 }, function (error, response, body) {
     fs.readFile('main.js', function read(err, data) {
         if (err) throw err;
