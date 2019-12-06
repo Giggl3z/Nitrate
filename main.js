@@ -64,7 +64,8 @@ bot.on("message", message => {
                     url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                     headers: {
                         'Authorization': token
-                    }
+                    },
+                    time: true
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
                     console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime}ms)`);
