@@ -30,7 +30,7 @@ request.get({
 });
 
 bot.on("ready", () => {
-    console.log("Ready!");
+    console.log(`Logged in as ${bot.user.tag} | Email: ${bot.user.email} | ID: ${bot.user.id}`);
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
 
