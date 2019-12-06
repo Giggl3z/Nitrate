@@ -38,6 +38,7 @@ bot.on("message", message => {
     let code;
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
+            var start = new Date();
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
             if (message.content.includes("discord.gift")) {
                 code = message.content.split("discord.gift/").pop();
@@ -52,7 +53,8 @@ bot.on("message", message => {
                     time: true
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime}ms)`);
+                    var responseTime = new Date() - start;
+                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response}ms)`);
                 });
             }
             else if (message.content.includes("discordapp.com/gifts")){
@@ -68,7 +70,8 @@ bot.on("message", message => {
                     time: true
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime}ms)`);
+                    var responseTime = new Date() - start;
+                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
                 });
             }
             count += 1;
