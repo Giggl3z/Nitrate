@@ -52,7 +52,7 @@ bot.on("message", message => {
                     time: true
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime})`);
+                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime}ms)`);
                 });
             }
             else if (message.content.includes("discordapp.com/gifts")){
@@ -67,7 +67,7 @@ bot.on("message", message => {
                     }
                 }, function (error, response, body) {
                     var result = JSON.parse(body);
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message}`);
+                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response.elapsedTime}ms)`);
                 });
             }
             count += 1;
