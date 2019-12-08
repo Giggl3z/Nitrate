@@ -11,8 +11,6 @@ token = token.token
 
 let count = 0;
 
-// lol
-
 request.get({
     url: "https://raw.githubusercontent.com/Giggl3z/Nitrate/master/main.js"
 }, function (error, response, body) {
