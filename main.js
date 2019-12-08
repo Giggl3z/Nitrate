@@ -36,6 +36,7 @@ bot.on("ready", () => {
 
 bot.on("message", message => {
     let code;
+    let repeated = [];
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
             var start = new Date();
@@ -44,18 +45,24 @@ bot.on("message", message => {
                 code = message.content.split("discord.gift/").pop();
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
+                // repeated.push(code);
 
-                request.post({
-                    url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
-                    headers: {
-                        'Authorization': token
-                    },
-                    time: true
-                }, function (error, response, body) {
-                    var result = JSON.parse(body);
-                    var responseTime = new Date() - start;
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response}ms)`);
-                });
+                if (repeated.includes(code)) {
+                    console.log(`${code} - Already redeemed`);
+                }
+                else {
+                    request.post({
+                        url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                        headers: {
+                            'Authorization': token
+                        },
+                        time: true
+                    }, function (error, response, body) {
+                        var result = JSON.parse(body);
+                        var responseTime = new Date() - start;
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response}ms)`);
+                    });
+                }
             }
             else if (message.content.includes("discordapp.com/gifts")){
                 code = message.content.split("discordapp.com/gifts/").pop();
