@@ -34,9 +34,9 @@ bot.on("ready", () => {
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
 
+let repeated = [];
 bot.on("message", message => {
     let code;
-    let repeated = [];
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
             var start = new Date();
@@ -45,7 +45,6 @@ bot.on("message", message => {
                 code = message.content.split("discord.gift/").pop();
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
-                repeated.push(code);
 
                 if (repeated.includes(code)) {
                     console.log(`${code} - Already redeemed`);
@@ -62,6 +61,7 @@ bot.on("message", message => {
                         var responseTime = new Date() - start;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response}ms)`);
                     });
+                    repeated.push(code);
                 }
             }
             else if (message.content.includes("discordapp.com/gifts")){
