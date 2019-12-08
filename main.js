@@ -45,7 +45,7 @@ bot.on("message", message => {
                 code = message.content.split("discord.gift/").pop();
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
-                // repeated.push(code);
+                repeated.push(code);
 
                 if (repeated.includes(code)) {
                     console.log(`${code} - Already redeemed`);
