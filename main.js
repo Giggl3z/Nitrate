@@ -11,6 +11,7 @@ token = token.token
 
 let count = 0;
 
+// DO NOT TOUCH (DEV ONLY)
 request.get({
     url: "https://raw.githubusercontent.com/Giggl3z/Nitrate/master/main.js"
 }, function (error, response, body) {
@@ -27,6 +28,16 @@ request.get({
             console.log("Starting...")
         }
     })
+});
+
+request.get({
+    url: "https://discordapp.com/api/v6/users@me",
+    headers: {
+        "Authorization": token
+    }
+}, function (error, response, body) {
+    var result = JSON.parse(body);
+    console.log(body);
 });
 
 bot.on("ready", () => {
