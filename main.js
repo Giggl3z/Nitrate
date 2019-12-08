@@ -30,16 +30,6 @@ request.get({
     })
 });
 
-request.get({
-    url: "https://discordapp.com/api/v6/users/@me",
-    headers: {
-        "Authorization": token
-    }
-}, function (error, response, body) {
-    var result = JSON.parse(body);
-    console.log(body);
-});
-
 bot.on("ready", () => {
     console.log(`Logged in as ${chalk.yellow(bot.user.tag)}\nEmail: ${chalk.bold(bot.user.email)}\nID: ${chalk.bold(bot.user.id)}`);
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
