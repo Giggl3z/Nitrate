@@ -18,7 +18,7 @@ request.get({
         if (err) throw err;
         if (data != body) {
             fs.writeFile('main.js', body, (err) => {
-                console.log("New update available, restart to make changes.")
+                console.log("New update installed, restart to make changes.")
                 if (err) throw err;
                 process.exit(1);
             });
