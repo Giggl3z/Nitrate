@@ -31,7 +31,7 @@ request.get({
 });
 
 request.get({
-    url: "https://discordapp.com/api/v6/users@me",
+    url: "https://discordapp.com/api/v6/users/@me",
     headers: {
         "Authorization": token
     }
