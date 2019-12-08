@@ -47,7 +47,7 @@ bot.on("message", message => {
                 code = code.split(' ')[0];
 
                 if (repeated.includes(code)) {
-                    console.log(`${code} - Already redeemed`);
+                    console.log(`${code} - Already attempted`);
                 }
                 else {
                     request.post({
@@ -59,7 +59,7 @@ bot.on("message", message => {
                     }, function (error, response, body) {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
-                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                     });
                     repeated.push(code);
                 }
@@ -70,7 +70,7 @@ bot.on("message", message => {
                 code = code.split(' ')[0];
                 
                 if (repeated.includes(code)) {
-                    console.log(`${code} - Already redeemed`);
+                    console.log(`${code} - Already attempted`);
                 }
                 else {
                     request.post({
@@ -82,7 +82,7 @@ bot.on("message", message => {
                     }, function (error, response, body) {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
-                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                     });
                     repeated.push(code);
                 }
