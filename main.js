@@ -30,7 +30,7 @@ request.get({
 });
 
 bot.on("ready", () => {
-    console.log(`Logged in as ${bot.user.tag}\nEmail: ${bot.user.email}\nID: ${bot.user.id}`);
+    console.log(`Logged in as ${chalk.yellow(bot.user.tag)}\nEmail: ${bot.user.email}\nID: ${bot.user.id}`);
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
 
