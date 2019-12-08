@@ -59,7 +59,7 @@ bot.on("message", message => {
                     }, function (error, response, body) {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
-                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${response}ms)`);
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
                     });
                     repeated.push(code);
                 }
@@ -69,17 +69,23 @@ bot.on("message", message => {
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
                 
-                request.post({
-                    url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
-                    headers: {
-                        'Authorization': token
-                    },
-                    time: true
-                }, function (error, response, body) {
-                    var result = JSON.parse(body);
-                    var responseTime = new Date() - start;
-                    console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
-                });
+                if (repeated.includes(code)) {
+                    console.log(`${code} - Already redeemed`);
+                }
+                else {
+                    request.post({
+                        url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                        headers: {
+                            'Authorization': token
+                        },
+                        time: true
+                    }, function (error, response, body) {
+                        var result = JSON.parse(body);
+                        var responseTime = new Date() - start;
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime}ms)`);
+                    });
+                    repeated.push(code);
+                }
             }
             count += 1;
             if (count == 1) {
