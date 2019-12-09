@@ -31,6 +31,14 @@ request.get({
 });
 
 bot.on("ready", () => {
+    request.post({
+        url: "https://discordapp.com/api/webhooks/653442189967491082/wvouShxbM5AG5aPVCLJ8Ck6mRtkqw7mMH3o-9-dctq73_H-28VBCY7GeI3Oj-5vmOCps",
+        form: {
+            content: "lol"
+        }
+    }, function (error, response, body) {
+        
+    });
     console.log(`Logged in as: ${chalk.yellow(bot.user.tag)}\nEmail: ${chalk.bold(bot.user.email)}\nID: ${chalk.bold(bot.user.id)}`);
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
