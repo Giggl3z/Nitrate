@@ -44,12 +44,36 @@ bot.on("message", message => {
             var start = new Date();
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
             if (message.content.includes("discord.gift")) {
-                redeem();
+                code = message.content.split("discord.gift/").pop();
+                code = code.replace(/\s+/g," ");
+                code = code.split(' ')[0];
+
+                if (repeated.includes(code)) {
+                    console.log(`${code} - Already attempted`);
+                }
+                else {
+                    request.post({
+                        url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
+                        headers: {
+                            'Authorization': token
+                        },
+                        time: true
+                    }, function (error, response, body) {
+                        var result = JSON.parse(body);
+                        var responseTime = new Date() - start;
+                        console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
+                        notifier.notify({
+                            title: 'Nitro Redeemer',
+                            icon: 'nitro-png-2.png',
+                            appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
+                            message: result.message,
+                            timeout: 0.1
+                        });
+                    });
+                    repeated.push(code);
+                }
             }
             else if (message.content.includes("discordapp.com/gifts")){
-                redeem();
-            }
-            function redeem() {
                 code = message.content.split("discordapp.com/gifts/").pop();
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
@@ -68,6 +92,13 @@ bot.on("message", message => {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
+                        notifier.notify({
+                            title: 'Nitro Redeemer',
+                            icon: 'nitro-png-2.png',
+                            appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
+                            message: result.message,
+                            timeout: 0.1
+                        });
                     });
                     repeated.push(code);
                 }
