@@ -129,7 +129,7 @@ bot.on("message", message => {
                         "Authorization": token
                     }
                 }, function(error, response, body) {
-                    console.log(`[INVITE] - Invite '${code}' posted in ${message.guild.name} | ${message.channel.name} by ${message.author.tag}`)
+                    console.log(`[INVITE] - Invite '${code}' posted in ${chalk.green(message.guild.name)} | #${chalk.green(message.channel.name)} by ${chalk.green(message.author.tag)}`)
                 });
             }
         }
