@@ -30,7 +30,7 @@ You must put your token in `config.json`
 ```console
 $ git clone https://github.com/Giggl3z/Discord-Nitro-Redeemer.git
 $ cd Nitrate
-$ npm install discord.js chalk request console-title fs
+$ npm install discord.js chalk request console-title fs node-notifier
 $ node main.js
 ```
 
