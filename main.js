@@ -6,9 +6,9 @@ const title = require('console-title');
 const fs = require('fs');
 const notifier = require('node-notifier');
 
-let config = fs.readFileSync('config.json');
-token = JSON.parse(config);
-token = token.token
+let configfile = fs.readFileSync('config.json');
+config = JSON.parse(configfile);
+token = config.token
 
 let count = 0;
 
@@ -40,6 +40,7 @@ let repeated = [];
 bot.on("message", message => {
     let code;
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
+        // NITRO SNIPE BEGINS
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
             var start = new Date();
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
@@ -111,6 +112,29 @@ bot.on("message", message => {
                 title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends | ${count.toString()} gifts`)
             }
         }
+        // NITRO SNIPE ENDS
+
+
+        // JOINER BEGINS
+
+        if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite/")) {
+            if (message.content.includes("discord.gg/")) {
+                code = message.content.split("discord.gg/").pop();
+                code = code.replace(/\s+/g," ");
+                code = code.split(' ')[0];
+
+                request.post({
+                    url: `https://discordapp.com/api/v6/invites/${code}`,
+                    headers: {
+                        "Authorization": token
+                    }
+                }, function(error, response, body) {
+                    console.log(`[INVITE] - Invite '${code}' posted in ${message.guild.name} | ${message.channel.name} by ${message.author.tag}`)
+                });
+            }
+        }
+
+        // JOINER ENDS
     }
 });
 bot.login(token).catch(function (error) {
