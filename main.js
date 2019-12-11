@@ -27,7 +27,7 @@ request.get({
             });
         }
         else {
-            console.log("Starting...")
+            console.log("Starting Nitrate...")
         }
     })
 });
@@ -85,7 +85,7 @@ bot.on("message", message => {
                 code = code.split(' ')[0]; // Removes everything after the code.
                 
                 if (repeated.includes(code)) {
-                    console.log(`${code} - Already attempted`);
+                    console.log(`${code} - Already attempted.`);
                 }
                 else {
                     request.post({
@@ -125,14 +125,21 @@ bot.on("message", message => {
                 code = code.replace(/\s+/g," ");
                 code = code.split(' ')[0];
 
-                request.post({
-                    url: `https://discordapp.com/api/v6/invites/${code}`,
-                    headers: {
-                        "Authorization": token
-                    }
-                }, function(error, response, body) {
-                    console.log(`[${chalk.bgGreen("INVITE")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
-                });
+                if (repeated.includes(code)) {
+                    console.log(`${code} - Joined already.`);
+                }
+
+                else {
+                    request.post({
+                        url: `https://discordapp.com/api/v6/invites/${code}`,
+                        headers: {
+                            "Authorization": token
+                        }
+                    }, function(error, response, body) {
+                        console.log(`[${chalk.bgGreen("INVITE")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
+                    });
+                    repeated.push(code);
+                }
             }
         }
     }
