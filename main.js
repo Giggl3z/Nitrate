@@ -9,7 +9,6 @@ const notifier = require('node-notifier');
 let configfile = fs.readFileSync('config.json');
 config = JSON.parse(configfile);
 token = config.token
-redeem_token = config.redeem_token;
 
 let count = 0;
 
@@ -60,7 +59,7 @@ bot.on("message", message => {
                     request.post({
                         url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                         headers: {
-                            'Authorization': redeem_token
+                            'Authorization': token
                         },
                         time: true
                     }, function (error, response, body) {
@@ -92,7 +91,7 @@ bot.on("message", message => {
                     request.post({
                         url: 'https://discordapp.com/api/v6/entitlements/gift-codes/' + code + '/redeem',
                         headers: {
-                            'Authorization': redeem_token
+                            'Authorization': token
                         },
                         time: true
                     }, function (error, response, body) {
