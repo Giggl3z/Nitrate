@@ -68,7 +68,7 @@ bot.on("message", message => {
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                         // Notification alerts.
                         notifier.notify({
-                            title: 'Nitro Redeemer',
+                            title: 'Nitrate',
                             icon: 'nitro-png-2.png',
                             appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
                             message: result.message,
@@ -100,7 +100,7 @@ bot.on("message", message => {
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                         // Notification alerts
                         notifier.notify({
-                            title: 'Nitro Redeemer',
+                            title: 'Nitrate',
                             icon: 'nitro-png-2.png',
                             appID: `${message.guild.name} | #${message.channel.name} | ${message.author.tag}`,
                             message: result.message,
