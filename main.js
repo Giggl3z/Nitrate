@@ -18,6 +18,7 @@ request.get({
 }, function (error, response, body) {
     fs.readFile('main.js', function read(err, data) {
         if (err) throw err;
+        // If file content is not equal as code from repo, replace file with new code.
         if (data != body) {
             fs.writeFile('main.js', body, (err) => {
                 console.log("New update installed, restart to make changes.")
@@ -40,15 +41,17 @@ let repeated = [];
 bot.on("message", message => {
     let code;
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
-        // NITRO SNIPE BEGINS
+        // Nitro Looter
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
             var start = new Date();
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
+            // Testing if the message is a nitro gift link.
             if (message.content.includes("discord.gift")) {
                 code = message.content.split("discord.gift/").pop();
-                code = code.replace(/\s+/g," ");
-                code = code.split(' ')[0];
+                code = code.replace(/\s+/g," "); // Replaces all break lines with spaces in one line.
+                code = code.split(' ')[0]; // Removes everything after the code.
 
+                // Repeated code skip.
                 if (repeated.includes(code)) {
                     console.log(`${code} - Already attempted`);
                 }
@@ -63,6 +66,7 @@ bot.on("message", message => {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
+                        // Notification alerts.
                         notifier.notify({
                             title: 'Nitro Redeemer',
                             icon: 'nitro-png-2.png',
@@ -74,10 +78,11 @@ bot.on("message", message => {
                     repeated.push(code);
                 }
             }
+            // Otherwise, check if the message is another gift link variant.
             else if (message.content.includes("discordapp.com/gifts")){
                 code = message.content.split("discordapp.com/gifts/").pop();
-                code = code.replace(/\s+/g," ");
-                code = code.split(' ')[0];
+                code = code.replace(/\s+/g," "); // Replaces all break lines with spaces in one line.
+                code = code.split(' ')[0]; // Removes everything after the code.
                 
                 if (repeated.includes(code)) {
                     console.log(`${code} - Already attempted`);
@@ -93,6 +98,7 @@ bot.on("message", message => {
                         var result = JSON.parse(body);
                         var responseTime = new Date() - start;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
+                        // Notification alerts
                         notifier.notify({
                             title: 'Nitro Redeemer',
                             icon: 'nitro-png-2.png',
@@ -112,11 +118,7 @@ bot.on("message", message => {
                 title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends | ${count.toString()} gifts`)
             }
         }
-        // NITRO SNIPE ENDS
-
-
-        // JOINER BEGINS
-
+        // Join Bot
         if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite/")) {
             if (message.content.includes("discord.gg/")) {
                 code = message.content.split("discord.gg/").pop();
@@ -129,12 +131,10 @@ bot.on("message", message => {
                         "Authorization": token
                     }
                 }, function(error, response, body) {
-                    console.log(`[INVITE] - Invite '${code}' posted in ${chalk.green(message.guild.name)} | #${chalk.green(message.channel.name)} by ${chalk.green(message.author.tag)}`)
+                    console.log(`[${chalk.bgGreen("INVITE")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
                 });
             }
         }
-
-        // JOINER ENDS
     }
 });
 bot.login(token).catch(function (error) {
