@@ -143,6 +143,31 @@ bot.on("message", message => {
             }
         }
     }
+    else if (message.channel.type == "dm") {
+        if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite/")) {
+            if (message.content.includes("discord.gg/")) {
+                code = message.content.split("discord.gg/").pop();
+                code = code.replace(/\s+/g," ");
+                code = code.split(' ')[0];
+
+                if (repeated.includes(code)) {
+                    console.log(`${code} - Joined already.`);
+                }
+
+                else {
+                    request.post({
+                        url: `https://discordapp.com/api/v6/invites/${code}`,
+                        headers: {
+                            "Authorization": token
+                        }
+                    }, function(error, response, body) {
+                        console.log(`[${chalk.bgGreen("INVITE")}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
+                    });
+                    repeated.push(code);
+                }
+            }
+        }
+    }
 });
 bot.login(token).catch(function (error) {
     console.log(error.message);
