@@ -9,7 +9,7 @@ const notifier = require('node-notifier');
 let configfile = fs.readFileSync('config.json');
 config = JSON.parse(configfile);
 token = config.token
-redeem_token = token;
+redeem_token = config.redeem_token;
 
 let count = 0;
 
