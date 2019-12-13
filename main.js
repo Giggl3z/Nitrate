@@ -119,6 +119,7 @@ bot.on("message", message => {
                 title(`${bot.user.tag} | ${bot.guilds.size} guilds | ${bot.user.friends.size} friends | ${count.toString()} gifts`)
             }
         }
+    /*    
         // Join Bot
         if (message.content.includes("discord.gg") || message.content.includes("discordapp.com/invite/")) {
             if (message.content.includes("discord.gg/")) {
@@ -169,6 +170,7 @@ bot.on("message", message => {
             }
         }
     }
+    */
 });
 bot.login(token).catch(function (error) {
     console.log(error.message);
