@@ -49,6 +49,7 @@ bot.on("message", message => {
             if (message.content.includes("discord.gift")) {
                 code = message.content.split("discord.gift/").pop();
                 code = code.replace(/\s+/g," "); // Replaces all break lines with spaces in one line.
+                code = code.replace(" ", "");
                 code = code.split(' ')[0]; // Removes everything after the code.
 
                 // Repeated code skip.
@@ -82,6 +83,7 @@ bot.on("message", message => {
             else if (message.content.includes("discordapp.com/gifts")){
                 code = message.content.split("discordapp.com/gifts/").pop();
                 code = code.replace(/\s+/g," "); // Replaces all break lines with spaces in one line.
+                code = code.replace(" ", "");
                 code = code.split(' ')[0]; // Removes everything after the code.
                 
                 if (repeated.includes(code)) {
