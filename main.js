@@ -39,7 +39,8 @@ bot.on("ready", () => {
 
 let repeated = [];
 bot.on("message", message => {
-    let code;
+  try{
+	let code;
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
         // Nitro Looter
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
@@ -121,6 +122,7 @@ bot.on("message", message => {
             }
         }
     }
+  } catch (e) { console.log("ERROR")}
 });
 bot.login(token).catch(function (error) {
     console.log(error.message);
