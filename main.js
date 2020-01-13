@@ -44,7 +44,6 @@ bot.on("message", message => {
     if (message.channel.type != 'dm' && message.channel.type != 'group') {
         // Nitro Looter
         if (message.content.includes("discord.gift") || message.content.includes("discordapp.com/gifts/")) {
-            var start = new Date();
             console.log(`[${chalk.bgYellow("GIFT")}] - [${chalk.cyan(message.guild.name)}] [${"#" + chalk.yellow(message.channel.name)}] - ${chalk.magenta(message.author.tag)}: ${chalk.underline(message.content)}`);
             // Testing if the message is a nitro gift link.
             if (message.content.includes("discord.gift")) {
@@ -66,7 +65,7 @@ bot.on("message", message => {
                         time: true
                     }, function (error, response, body) {
                         var result = JSON.parse(body);
-                        var responseTime = new Date() - start;
+                        var responseTime = new Date() - message.createdTimestamp;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                         // Notification alerts.
                         notifier.notify({
@@ -99,7 +98,7 @@ bot.on("message", message => {
                         time: true
                     }, function (error, response, body) {
                         var result = JSON.parse(body);
-                        var responseTime = new Date() - start;
+                        var responseTime = new Date() - message.createdTimestamp;
                         console.log(`[${chalk.bgBlack('*')}] - ${result.message} (${responseTime / 1000}s)`);
                         // Notification alerts
                         notifier.notify({
