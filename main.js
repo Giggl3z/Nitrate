@@ -38,8 +38,7 @@ bot.on("ready", () => {
     bot.user.setPresence({
         game: {
             name: 'Nitrate',
-            type: 'STREAMING',
-            url: "https://github.com/Giggl3z/Nitrate"
+            type: 'PLAYING'
         }
     });
 });
