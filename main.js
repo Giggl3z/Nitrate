@@ -12,25 +12,7 @@ let token = config.token
 
 let count = 0;
 
-// DO NOT TOUCH (DEV ONLY)
-request.get({
-    url: "https://raw.githubusercontent.com/Giggl3z/Nitrate/master/main.js"
-}, function (error, response, body) {
-    fs.readFile('main.js', function read(err, data) {
-        if (err) throw err;
-        // If file content is not equal as code from repo, replace file with new code.
-        if (data !== body) {
-            fs.writeFile('main.js', body, (err) => {
-                console.log("New update installed, restart to make changes.")
-                if (err) throw err;
-                process.exit(1);
-            });
-        }
-        else {
-            console.log("Starting Nitrate...")
-        }
-    })
-});
+console.log("Starting Nitrate...")
 
 bot.on("ready", () => {
     console.log(`Logged in as: ${chalk.yellow(bot.user.tag)}\nEmail: ${chalk.bold(bot.user.email)}\nID: ${chalk.bold(bot.user.id)}`);
