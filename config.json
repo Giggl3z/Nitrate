@@ -1,3 +1,6 @@
 {
-    "token": ""
+    "token": "",
+    "presence": true,
+    "selfbot": true,
+    "blacklisted": []
 }
