@@ -30,7 +30,7 @@ You must put your token in `config.json`
 ```console
 $ git clone https://github.com/Giggl3z/Nitrate.git
 $ cd Nitrate
-$ npm install discord.js chalk request console-title fs node-notifier discord-rich-presence
+$ npm install discord.js@11.5.1 chalk request console-title fs node-notifier discord-rich-presence
 $ node main.js
 ```
 
