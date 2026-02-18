@@ -1,0 +1,20 @@
+{
+  "name": "nitrate",
+  "version": "1.1.0",
+  "description": "Nitro gift auto-redeemer utility (educational).",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "console-title": "^1.1.0",
+    "discord-rich-presence": "0.0.8",
+    "discord.js": "11.6.4",
+    "node-notifier": "^10.0.1",
+    "request": "^2.88.2"
+  }
+}

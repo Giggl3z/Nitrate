@@ -1,37 +1,72 @@
-# Nitro Auto Redeemer
+# Nitrate (Nitro Auto Redeemer)
 
-### Automatically redeem nitro gifts sent across all of your servers.
+Automatically attempts to redeem Nitro gift links found in Discord servers.
 
-![Gift Redeemer](https://cdn.discordapp.com/attachments/645899747969728512/646063780622499843/image0.jpg)
+> ⚠️ **Warning:** This behavior may violate Discord Terms of Service. Use at your own risk.
 
-#### Notifications (New)
-![Notification](https://cdn.discordapp.com/attachments/640700265367994388/649105849708576778/unknown.png)
+---
 
-## Required
+## Requirements
 
-> Note: By using this script you are breaking Discord's Terms of Service. **Use at your own risk.**
+- Node.js 16+
+- npm
+- git
 
-### Node.js
+---
 
-https://nodejs.org/en/download/
+## Setup
 
+1. Clone repo
 
-
-You probably will need npm.
-
-### npm
-https://www.npmjs.com/get-npm
-
-### git
-https://git-scm.com/downloads
-
-## Installation
-You must put your token in `config.json`
-```console
-$ git clone https://github.com/Giggl3z/Nitrate.git
-$ cd Nitrate
-$ npm install discord.js chalk request console-title fs node-notifier discord-rich-presence
-$ node main.js
+```bash
+git clone https://github.com/Giggl3z/Nitrate.git
+cd Nitrate
 ```
 
-If you wish to contact me, join our telegram group:  http://t.me/nitroclaimer
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Create your local config file
+
+```bash
+cp config.example.json config.json
+```
+
+4. Configure token in `config.json`
+
+```json
+{
+  "token": "YOUR_TOKEN_HERE",
+  "presence": true,
+  "selfbot": true,
+  "blacklisted": []
+}
+```
+
+5. Run
+
+```bash
+npm start
+```
+
+---
+
+## Commands
+
+When `selfbot` is enabled, use:
+
+- `$blacklist add <id>`
+- `$blacklist remove <id>`
+
+Blacklist supports guild/user/channel IDs.
+
+---
+
+## Notes
+
+- Uses Discord API gift redeem endpoint.
+- Deduplicates repeated gift codes during runtime.
+- Shows desktop notifications for redeem responses.
